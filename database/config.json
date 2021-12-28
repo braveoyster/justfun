@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "qweQWE!@#",
+    "database": "rd_mytikas2_dev",
+    "host": "47.94.37.100",
+    "port": 20617,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "qweQWE!@#",
+    "database": "rd_mytikas2",
+    "host": "47.94.37.100",
+    "port": 20617,
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "qweQWE!@#",
+    "database": "rd_mytikas2",
+    "host": "47.94.37.100",
+    "port": 20617,
+    "dialect": "mysql"
+  }
+}

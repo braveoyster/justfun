@@ -9,7 +9,7 @@ export default () => {
       port: 20617,
       username: 'root',
       password: 'qweQWE!@#',
-      database: 'rd_mytikas',
+      database: 'rd_mytikas2_dev',
       pool: {
         max: 100,
         min: 0,
