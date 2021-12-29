@@ -6,15 +6,19 @@ export default (app: Application) => {
     STRING, INTEGER, BOOLEAN, DATE, NOW
   } = app.Sequelize;
 
-  const News: any = app.model.define(
-    'news',
+  const CrawlJobs: any = app.model.define(
+    'crawl_jobs',
     {
       id: {
         type: INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
-      text: {
+      job_name: {
+        type: STRING(255),
+        allowNull: false,
+      },
+      page_title: {
         type: STRING(255),
         allowNull: false,
       },
@@ -22,17 +26,20 @@ export default (app: Application) => {
         type: STRING(2000),
         allowNull: true,
       },
-      news_type: {
-        type: INTEGER,
-        allowNull: false,
-        defaultValue: 0,
+      cover: {
+        type: STRING(2000),
+        allowNull: true,
+      },
+      summary: {
+        type: STRING(500),
+        allowNull: true
       },
       pub_date: {
         type: DATE
       },
-      source_link: {
-        type: STRING(2000),
-        allowNull: true,
+      crawl_status: {
+        type: INTEGER,
+        defaultValue: 0,
       },
       is_deleted: {
         type: BOOLEAN,
@@ -48,14 +55,14 @@ export default (app: Application) => {
         type: DATE,
         allowNull: true,
         defaultValue: NOW,
-      },
+      }
     },
     {
       freezeTableName: true,
       timestamps: false,
-      tableName: 'news'
+      tableName: 'crawl_jobs'
     },
   );
 
-  return News;
+  return CrawlJobs;
 };
