@@ -8,4 +8,10 @@ export default class NewsController extends BaseCtrl {
     this.lift(data);
   }
 
+  public async discoverLatest() {
+    const { ctx } = this;
+    const data = await ctx.service.news.queryMpLatest();
+
+    this.lift(data);
+  }
 }

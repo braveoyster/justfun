@@ -5,6 +5,29 @@ const Crawler = require('crawler');
  * Test Service
  */
 export default class News extends BaseService {
+  async queryMpLatest() {
+    const { app: { model } } = this;
+    const { whereFilters, options } = this.formatQueryParams([
+    ]);
+
+    const query = `db.collection("news").where({done:true}).limit(10).skip(1).get()`;
+    const res = await this.service.common.mpUtils.query(query);
+
+    const resp = await model.News.findAndCountAll({
+      where: {
+        ...whereFilters,
+      },
+      ...options,
+      order: [['created_at', 'DESC']],
+    });
+
+    return {
+      results: resp.rows,
+      length: resp.rows.length,
+      total: resp.count,
+    };
+  }
+
   async find() {
     const { app: { model } } = this;
     const { whereFilters, options } = this.formatQueryParams([

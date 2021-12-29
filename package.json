@@ -8,7 +8,7 @@
     "declarations": true
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-justfun --port=9166",
+    "start": "npm run tsc && egg-scripts start --daemon --title=egg-server-justfun --port=9166",
     "stop": "egg-scripts stop --title=egg-server-justfun",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
@@ -24,6 +24,7 @@
   "dependencies": {
     "crawler": "^1.3.0",
     "egg": "^2.6.1",
+    "egg-axios": "^1.1.6",
     "egg-redis": "^2.4.0",
     "egg-scripts": "^2.6.0",
     "egg-sequelize": "^6.0.0",
