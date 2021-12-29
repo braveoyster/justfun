@@ -5,11 +5,11 @@ export default () => {
     jwtSecret: 'justfun-secret-test',
     sequelize: {
       dialect: 'mysql',
-      host: '47.94.37.100',
+      host: '127.0.0.1',
       port: 20617,
       username: 'root',
-      password: 'qweQWE!@#',
-      database: 'rd_mytikas',
+      password: 'Qwe123!@#',
+      database: 'justfun_prod',
       pool: {
         max: 100,
         min: 0,
