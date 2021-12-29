@@ -14,4 +14,29 @@ export default class NewsController extends BaseCtrl {
 
     this.lift(data);
   }
+
+  public async syncLatest() {
+    const { ctx } = this;
+    const data = await ctx.service.news.syncLatest();
+
+    this.lift(data);
+  }
+
+  public async removeListRecords() {
+    const { ctx } = this;
+    const { startts } = this.ctx.params;
+
+    const data = await ctx.service.news.removeListRecords(startts);
+
+    this.lift(data);
+  }
+
+  public async removeDetailRecords() {
+    const { ctx } = this;
+    const { startts } = this.ctx.params;
+
+    const data = await ctx.service.news.removeDetailRecords(startts);
+
+    this.lift(data);
+  }
 }

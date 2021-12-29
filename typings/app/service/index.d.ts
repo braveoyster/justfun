@@ -11,6 +11,7 @@ import ExportBaseSvc from '../../../app/service/baseSvc';
 import ExportCrawlJobs from '../../../app/service/crawlJobs';
 import ExportNews from '../../../app/service/news';
 import ExportRedis from '../../../app/service/redis';
+import ExportCommonMpUtils from '../../../app/service/common/mpUtils';
 
 declare module 'egg' {
   interface IService {
@@ -19,5 +20,8 @@ declare module 'egg' {
     crawlJobs: AutoInstanceType<typeof ExportCrawlJobs>;
     news: AutoInstanceType<typeof ExportNews>;
     redis: AutoInstanceType<typeof ExportRedis>;
+    common: {
+      mpUtils: AutoInstanceType<typeof ExportCommonMpUtils>;
+    }
   }
 }

@@ -7,6 +7,28 @@ export default class MpUtils extends Service {
   private secret = '0a23d14b6949eabbde3a828cf8686804';
   private env = 'gongfeng-f5wph';
 
+  public async delete(query: String) {
+    const method = 'databasedelete';
+
+    try {
+      const ret = this.execRequest(method, { env: this.env, query });
+      return ret;
+    } catch (e) {
+      throw new Error(`${method}执行错误`);
+    }
+  }
+
+  public async create(query: String) {
+    const method = 'databaseadd';
+
+    try {
+      const ret = this.execRequest(method, { env: this.env, query });
+      return ret;
+    } catch (e) {
+      throw new Error(`${method}执行错误`);
+    }
+  }
+
   public async query(query: String) {
     const method = 'databasequery';
 
@@ -34,14 +56,19 @@ export default class MpUtils extends Service {
     const key = 'mpApiAcToken';
 
     let atCache = await this.ctx.service.redis.get(key);
-    if (atCache) return atCache.accessToken;
+    if (atCache) return atCache.access_token;
 
-    const res = await this.app.curl(`https://api.weixin.qq.com/cgi-bin/token?appid=${this.appId}&grant_type=client_credential&secret=${this.secret}`);
+    const res = await this.app.curl(`https://api.weixin.qq.com/cgi-bin/token?appid=${this.appId}&grant_type=client_credential&secret=${this.secret}`, {
+      dataType: 'json',
+      timeout: 5000
+    });
 
-    if (res && res.data && !res.data.err_code) {
-      atCache = res.data.result;
-      await this.ctx.service.redis.set(key, res.data.result, 7100);
-      return atCache.accessToken;
+    console.log('111111111');
+    console.log(JSON.stringify(res));
+    if (res.data && !res.data.err_code) {
+      atCache = res.data;
+      await this.ctx.service.redis.set(key, res.data, 7100);
+      return atCache.access_token;
     } else {
       throw new Error('获取Mp ac token出错');
     }
