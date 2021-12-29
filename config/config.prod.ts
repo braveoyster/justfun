@@ -19,10 +19,10 @@ export default () => {
     },
     redis: {
       client: {
-        host: 'redis',
+        host: '127.0.0.1',
         port: 6379,
         db: 0,
-        password: '123456',
+        password: '',
       },
       app: true,
       agent: true,
