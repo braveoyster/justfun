@@ -26,7 +26,7 @@ export default class News extends BaseService {
 
     const entry = JSON.parse(latest.data[0]);
     console.log(entry.pub_data_ts);
-    const posts: any = await this.crawlList(20);
+    const posts: any = await this.crawlList(3);
 
     const crawls = posts.filter( post => post.pub_data_ts > entry.pub_data_ts);
 
