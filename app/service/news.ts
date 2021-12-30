@@ -42,8 +42,8 @@ export default class News extends BaseService {
     });
     const listAddSql = `db.collection("list").add({data: [${list}]})`;
     const ret = await this.service.common.mpUtils.create(listAddSql);
-    // console.log('------------------------');
-    // console.log(ret);
+    console.log('------------------------');
+    console.log(ret);
 
     // 2. detail
     const news = results.map(item => {
