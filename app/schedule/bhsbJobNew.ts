@@ -14,7 +14,7 @@ export default class BhsbJob extends Subscription {
 
   async subscribe() {
     // 1. crawl the list pages
-    const posts: any = await this.crawlList(50);
+    const posts: any = await this.crawlList(3);
 
     // 2. crawl the details
     const details: any = await this.crawlPostDetail(posts);
@@ -39,6 +39,7 @@ export default class BhsbJob extends Subscription {
     return new Promise((resolve) => {
       const crawler = new Crawler({
         maxConnections: 10,
+        userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36',
         callback: async (error, res, done) => {
           if (error) {
             console.log(error);
@@ -88,6 +89,7 @@ export default class BhsbJob extends Subscription {
     return new Promise((resolve) => {
       const crawler = new Crawler({
         maxConnections: 10,
+        userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36',
         callback: async (error, res, done) => {
           if (error) {
             console.log(error);
@@ -96,6 +98,7 @@ export default class BhsbJob extends Subscription {
           console.log('crawl post....');
           const $ = res.$;
           console.log(res.body);
+          console.log(res.request.uri);
           $('.type-post').each(function(_idx, item) {
             const $item = $(item);
             const $link = $item.find('a').last();
