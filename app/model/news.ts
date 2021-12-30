@@ -30,6 +30,12 @@ export default (app: Application) => {
       pub_date: {
         type: DATE
       },
+      pub_date_ts: {
+        type: INTEGER
+      },
+      pub_data_ts: {
+        type: INTEGER
+      },
       source_link: {
         type: STRING(2000),
         allowNull: true,

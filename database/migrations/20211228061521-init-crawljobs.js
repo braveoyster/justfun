@@ -41,6 +41,12 @@ id: {
       pub_date: {
         type: DATE
       },
+      pub_date_ts: {
+        type: INTEGER
+      },
+      pub_data_ts: {
+        type: INTEGER
+      },
       crawl_status: {
         type: INTEGER,
         defaultValue: 0,

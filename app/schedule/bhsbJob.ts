@@ -28,16 +28,21 @@ export default class BhsbJob extends Subscription {
         $('.type-post').each(function(_idx, item) {
           const $item = $(item);
           const $link = $item.find('a').last();
-          const data = {
-            page_title: $link.text(),
-            url: $link.attr('href'),
-            pub_date: new Date($item.find('.entry-date').text().replaceAll(' ', '').replace('年', '-').replace('月', '-').replace('日','')),
-            summary: $item.find('.entry-summary').text(),
-            cover: $item.find('.thumbnail-wrap').find('img').attr('src'),
-            job_name: 'bhsb'
+          if ($link.text().indexOf('[博海拾贝') >= 0) {// 忽略其他
+            const date = new Date($item.find('.entry-date').text().replaceAll(' ', '').replace('年', '-').replace('月', '-').replace('日',''));
+            const data = {
+              page_title: $link.text(),
+              url: $link.attr('href'),
+              pub_date: date,
+              pub_data_ts: Math.round(date.getTime() / 1000), // 旧冗余字段
+              pub_date_ts: Math.round(date.getTime() / 1000),
+              summary: $item.find('.entry-summary').text(),
+              cover: $item.find('.thumbnail-wrap').find('img').attr('src'),
+              job_name: 'bhsb'
+            }
+            items.push(data);
+            console.log(data);
           }
-          items.push(data);
-          console.log(data);
         });
 
         await this.service.crawlJobs.create(items);

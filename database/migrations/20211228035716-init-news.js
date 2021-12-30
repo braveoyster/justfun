@@ -17,6 +17,8 @@ module.exports = {
       text: STRING(255),
       url: STRING(2000),
       pub_date: DATE,
+      pub_data_ts: INTEGER,
+      pub_date_ts: INTEGER,
       source_link: STRING(2000),
       news_type: INTEGER,
       is_deleted: BOOLEAN,
