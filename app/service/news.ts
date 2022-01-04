@@ -44,6 +44,7 @@ export default class News extends BaseService {
     const ret = await this.service.common.mpUtils.create(listAddSql);
     console.log('------------------------');
     console.log(ret);
+    this.ctx.logger.warn(listAddSql);
 
     // 2. detail
     const news = results.map(item => {
@@ -52,6 +53,8 @@ export default class News extends BaseService {
 
     const detailAddSql = `db.collection("news").add({data: [${news}]})`;
     const ret2 = await this.service.common.mpUtils.create(detailAddSql);
+    this.ctx.logger.warn(detailAddSql);
+
     return {ret, ret2};
   }
 
