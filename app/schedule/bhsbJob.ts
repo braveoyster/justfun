@@ -3,7 +3,7 @@ import { Subscription } from 'egg';
 export default class BhsbJob extends Subscription {
   static get schedule() {
     return {
-      cron: '* */15 16-18 * * *',
+      cron: '* */15 16-20 * * *',
       type: 'worker',
       // interval: '5s',
       // immediate: true
