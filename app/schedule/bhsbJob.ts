@@ -3,7 +3,7 @@ import { Subscription } from 'egg';
 export default class BhsbJob extends Subscription {
   static get schedule() {
     return {
-      cron: '* */15 16-20 * * *',
+      cron: '* */10 17-19 * * *',
       type: 'worker',
       // interval: '5s',
       // immediate: true
@@ -18,7 +18,7 @@ export default class BhsbJob extends Subscription {
     }
     await this.service.redis.set('bhsbJob_tmp', { pendding: true });
     this.ctx.logger.warn(`bhsbJob运行开始：${(new Date()).toString()}`);
-    // await this.service.news.syncLatest();
+    await this.service.news.syncLatest();
     this.ctx.logger.warn(`bhsbJob运行结束：${(new Date()).toString()}`);
   }
 }
