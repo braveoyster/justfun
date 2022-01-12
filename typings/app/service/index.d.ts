@@ -11,6 +11,7 @@ import ExportBaseSvc from '../../../app/service/baseSvc';
 import ExportCrawlJobs from '../../../app/service/crawlJobs';
 import ExportNews from '../../../app/service/news';
 import ExportRedis from '../../../app/service/redis';
+import ExportZodiac from '../../../app/service/zodiac';
 import ExportCommonMpUtils from '../../../app/service/common/mpUtils';
 
 declare module 'egg' {
@@ -20,6 +21,7 @@ declare module 'egg' {
     crawlJobs: AutoInstanceType<typeof ExportCrawlJobs>;
     news: AutoInstanceType<typeof ExportNews>;
     redis: AutoInstanceType<typeof ExportRedis>;
+    zodiac: AutoInstanceType<typeof ExportZodiac>;
     common: {
       mpUtils: AutoInstanceType<typeof ExportCommonMpUtils>;
     }

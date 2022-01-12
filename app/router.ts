@@ -12,4 +12,6 @@ export default (app: Application) => {
 
   router.get('/crawl_jobs/remove/:startts', controller.news.removeListRecords);
   router.get('/crawl_jobs/remove_detail/:startts', controller.news.removeDetailRecords);
+
+  router.get('/zodiac/sync', controller.zodiac.syncLatest);
 };
