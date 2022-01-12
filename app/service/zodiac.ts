@@ -114,11 +114,13 @@ export default class Zodiac extends BaseService {
       } else if (idx == 1) { // career
         const score = $el.find('strong').first().text();
         const $cs = $el.find('.week_mod_text');
-        const findjob = $cs.first().find('p').text();
+        const job = $cs.first().find('p').text();
+        const findjob = $cs.eq(1).find('p').text();
         const learn = $cs.last().find('p').text();
 
         entry.career = {
           score,
+          job,
           findjob,
           learn
         };
@@ -189,11 +191,13 @@ export default class Zodiac extends BaseService {
       } else if (idx == 1) { // career
         const score = $el.find('strong').first().text();
         const $cs = $el.find('.week_mod_text');
-        const findjob = $cs.first().find('p').text();
+        const job = $cs.first().find('p').text();
+        const findjob = $cs.eq(1).find('p').text();
         const learn = $cs.last().find('p').text();
 
         entry.career = {
           score,
+          job,
           findjob,
           learn
         };
