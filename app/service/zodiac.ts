@@ -290,18 +290,19 @@ export default class Zodiac extends BaseService {
           done();
         }
       });
-      const zodiacs = [{ name: "白羊座", flag: "Taurus" },
-        { name: "金牛座", flag: "Gemini" },
-        { name: "双子座", flag: "Cancer" },
-        { name: "巨蟹座", flag: "Leo" },
-        { name: "狮子座", flag: "Virgo" },
-        { name: "处女座", flag: "Libra" },
-        { name: "天秤座", flag: "Scorpio" },
-        { name: "天蝎座", flag: "Sagittarius" },
-        { name: "射手座", flag: "Capricorn" },
-        { name: "摩羯座", flag: "Aquarius" },
-        { name: "水瓶座", flag: "Pisces" },
-        { name: "双鱼座", flag: "Aries" }
+      const zodiacs = [
+        { name: "白羊座", flag: "Aries" },
+        { name: "金牛座", flag: "Taurus" },
+        { name: "双子座", flag: "Gemini" },
+        { name: "巨蟹座", flag: "Cancer" },
+        { name: "狮子座", flag: "Leo" },
+        { name: "处女座", flag: "Virgo" },
+        { name: "天秤座", flag: "Libra" },
+        { name: "天蝎座", flag: "Scorpio" },
+        { name: "射手座", flag: "Sagittarius" },
+        { name: "摩羯座", flag: "Capricorn" },
+        { name: "水瓶座", flag: "Aquarius" },
+        { name: "双鱼座", flag: "Pisces" }
       ];
 
       const dayTypes = ["today",
