@@ -65,6 +65,7 @@ export default class Zodiac extends BaseService {
   }
 
   private parseMonth($con, res) {
+    const emptyStr = '作者今天没有心情写~';
     const $ = res.$;
     const entry: any = {
       friend: [],
@@ -101,15 +102,15 @@ export default class Zodiac extends BaseService {
       const $el = $(el);
 
       if (idx == 0 ) { // love
-        const score = $el.find('strong').first().text();
+        const score = $el.find('strong').first().text().trim();
         const $cs = $el.find('.week_mod_text');
-        const single = $cs.first().find('p').text();
-        const love = $cs.last().find('p').text();
+        const single = $cs.first().find('p').text().trim();
+        const love = $cs.last().find('p').text().trim();
 
         entry.love = {
-          score,
-          single,
-          love
+          score: score,
+          single: single || emptyStr,
+          love: love || emptyStr
         };
       } else if (idx == 1) { // career
         const score = $el.find('strong').first().text();
@@ -119,10 +120,10 @@ export default class Zodiac extends BaseService {
         const learn = $cs.last().find('p').text();
 
         entry.career = {
-          score,
-          job,
-          findjob,
-          learn
+          score: score,
+          job: job || emptyStr,
+          findjob: findjob || emptyStr,
+          learn: learn || emptyStr
         };
       } else {
         const score = $el.find('strong').first().text();
@@ -130,7 +131,7 @@ export default class Zodiac extends BaseService {
 
         entry.money = {
           score,
-          summary
+          summary: summary || emptyStr
         };
       }
     });
@@ -149,6 +150,7 @@ export default class Zodiac extends BaseService {
     return entry;
   }
   private parseWeek($con, res) {
+    const emptyStr = '作者今天没有心情写~';
     const $ = res.$;
     const entry: any = {
       friend: [],
@@ -185,8 +187,8 @@ export default class Zodiac extends BaseService {
 
         entry.love = {
           score,
-          single,
-          love
+          single: single || emptyStr,
+          love: love || emptyStr
         };
       } else if (idx == 1) { // career
         const score = $el.find('strong').first().text();
@@ -197,9 +199,9 @@ export default class Zodiac extends BaseService {
 
         entry.career = {
           score,
-          job,
-          findjob,
-          learn
+          job: job || emptyStr,
+          findjob: findjob || emptyStr,
+          learn: learn || emptyStr
         };
       } else {
         const score = $el.find('strong').first().text();
@@ -207,7 +209,7 @@ export default class Zodiac extends BaseService {
 
         entry.money = {
           score,
-          summary
+          summary: summary || emptyStr
         };
       }
     });
@@ -218,9 +220,9 @@ export default class Zodiac extends BaseService {
     const style = $luck.find('.dress').find('p').text();
     const activity = $luck.find('.activity').find('p').text();
     entry.luck = {
-      makeup,
-      style,
-      activity
+      makeup: makeup || emptyStr,
+      style: style || emptyStr,
+      activity: activity || emptyStr
     };
 
     return entry;
