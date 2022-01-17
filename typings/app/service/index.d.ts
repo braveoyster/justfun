@@ -12,6 +12,7 @@ import ExportCrawlJobs from '../../../app/service/crawlJobs';
 import ExportGifSina from '../../../app/service/gifSina';
 import ExportNews from '../../../app/service/news';
 import ExportRedis from '../../../app/service/redis';
+import ExportSinaSvc from '../../../app/service/sinaSvc';
 import ExportZodiac from '../../../app/service/zodiac';
 import ExportCommonMpUtils from '../../../app/service/common/mpUtils';
 
@@ -23,6 +24,7 @@ declare module 'egg' {
     gifSina: AutoInstanceType<typeof ExportGifSina>;
     news: AutoInstanceType<typeof ExportNews>;
     redis: AutoInstanceType<typeof ExportRedis>;
+    sinaSvc: AutoInstanceType<typeof ExportSinaSvc>;
     zodiac: AutoInstanceType<typeof ExportZodiac>;
     common: {
       mpUtils: AutoInstanceType<typeof ExportCommonMpUtils>;
