@@ -24,7 +24,10 @@ export default class Zodiac extends BaseService {
       }
     });
     const sql = treats.map(r => {
-      return CJSON.stringify(r);
+      return CJSON.stringify({
+        created_time: Date.now(),
+        ...r
+      });
     });
     console.log('------------');
     // console.log(JSON.stringify(results));
