@@ -28,6 +28,9 @@ export default () => {
       app: true,
       agent: true,
     },
+    clients: {
+      'db09d96a3479d99': '9d95f373032b72926cb3adefda99c9dcdaa31422188e15414dadba90be9519f1', // require('crypto').randomBytes(32).toString('hex'); console.log(token);
+    }
   };
 
   return config;

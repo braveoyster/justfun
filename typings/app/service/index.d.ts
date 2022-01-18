@@ -14,6 +14,7 @@ import ExportNews from '../../../app/service/news';
 import ExportRedis from '../../../app/service/redis';
 import ExportSinaSvc from '../../../app/service/sinaSvc';
 import ExportZodiac from '../../../app/service/zodiac';
+import ExportCommonAuth from '../../../app/service/common/auth';
 import ExportCommonMpUtils from '../../../app/service/common/mpUtils';
 
 declare module 'egg' {
@@ -27,6 +28,7 @@ declare module 'egg' {
     sinaSvc: AutoInstanceType<typeof ExportSinaSvc>;
     zodiac: AutoInstanceType<typeof ExportZodiac>;
     common: {
+      auth: AutoInstanceType<typeof ExportCommonAuth>;
       mpUtils: AutoInstanceType<typeof ExportCommonMpUtils>;
     }
   }

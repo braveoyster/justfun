@@ -8,11 +8,18 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1640658457719_7757';
 
   // add your egg config in here
-  config.middleware = [];
+  config.middleware = [
+    'verifyPassport'
+  ];
 
   // add your special config in here
   const bizConfig = {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
+    auth: {
+      ignores: [
+        '/login',
+      ]
+    }
   };
 
   // the return config will combines to EggAppConfig
