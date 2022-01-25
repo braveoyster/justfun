@@ -198,11 +198,15 @@ export default class News extends BaseService {
         const $ps = $('.entry-content').find('p');
         $ps.each(function(idx, item) {
           if ((idx + 1) % 2 == 1) {
-            items.push({
-              text: $(item).text(),
-              url: $ps.eq(idx + 1).find('img').attr('src'),
-              pub_date: res.options.parameter2
-            })
+            const text = $(item).text();
+            // 去除最后两条无用信息
+            if (text.indexOf('添加梁萧') !== -1 && text.indexOf('分享图片') !== -1) {
+              items.push({
+                text,
+                url: $ps.eq(idx + 1).find('img').attr('src'),
+                pub_date: res.options.parameter2
+              });
+            }
           }
         });
 
