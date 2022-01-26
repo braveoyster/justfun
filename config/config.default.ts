@@ -18,6 +18,7 @@ export default (appInfo: EggAppInfo) => {
     auth: {
       ignores: [
         '/login',
+        '/news/append_by_ext'
       ]
     }
   };

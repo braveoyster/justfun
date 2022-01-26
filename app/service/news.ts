@@ -4,6 +4,20 @@ import BaseService from './baseSvc';
  * Test Service
  */
 export default class News extends BaseService {
+  async insert(text, src) {
+    const date = new Date(new Date().toDateString());
+    const newEntry = {
+      text,
+      url: decodeURIComponent(src),
+      pub_date: Math.round(date.getTime() / 1000),
+      pendding: true
+    };
+    const query = `db.collection("news").add({data: [${JSON.stringify(newEntry)}]})`;
+    const res = await this.service.common.mpUtils.create(query);
+
+    return res.data;
+  }
+
   async queryMpLatest() {
 
     const query = `db.collection("list").orderBy("pub_data_ts", "desc").limit(1).get()`;
