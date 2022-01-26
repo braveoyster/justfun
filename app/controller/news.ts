@@ -10,8 +10,8 @@ export default class NewsController extends BaseCtrl {
 
   public async insert() {
     const { ctx } = this;
-    const { text, src } = ctx.request.query;
-    const data = await ctx.service.news.insert(text, src);
+    const { text, tags, src } = ctx.request.query;
+    const data = await ctx.service.news.insert(text, tags, src);
 
     this.lift(data);
   }

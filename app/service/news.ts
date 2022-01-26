@@ -4,12 +4,13 @@ import BaseService from './baseSvc';
  * Test Service
  */
 export default class News extends BaseService {
-  async insert(text, src) {
+  async insert(text, tags, src) {
     const date = new Date(new Date().toDateString());
     const newEntry = {
       text,
       url: decodeURIComponent(src),
       pub_date: Math.round(date.getTime() / 1000),
+      tags: tags.split(','),
       pendding: true
     };
     const query = `db.collection("news").add({data: [${JSON.stringify(newEntry)}]})`;
