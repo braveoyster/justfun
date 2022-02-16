@@ -192,6 +192,17 @@ export default class News extends BaseService {
     };
   }
 
+  async fetchRandNews() {
+    const query = `db.collection("news").aggregate()
+        .sample({
+          size: 10
+        }).end()`;
+
+    const res = await this.service.common.mpUtils.query(query);
+
+    return res.data;
+  }
+
   async create(items: any) {
     const ret = await this.bulkCreateResources('News', items);
     return ret;

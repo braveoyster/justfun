@@ -5,6 +5,7 @@ export default (app: Application) => {
 
   // router.get('/', controller.home.index);
 
+  router.get('/mp_rand_news', controller.news.fetchRandNews);
   router.get('/news', controller.news.index);
   router.get('/news/append_by_ext', controller.news.insert);
 

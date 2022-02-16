@@ -23,6 +23,13 @@ export default class NewsController extends BaseCtrl {
     this.lift(data);
   }
 
+  public async fetchRandNews() {
+    const { ctx } = this;
+    const data = await ctx.service.news.fetchRandNews();
+
+    this.lift(data);
+  }
+
   public async syncLatest() {
     const { ctx } = this;
     const data = await ctx.service.news.syncLatest();
